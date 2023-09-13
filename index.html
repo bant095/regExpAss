@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+
+       // ============ANSWER 1================
+
+      // Define test strings
+      const testStrings = [
+        "I have a car and a cat.",
+        "The pop music is playing.",
+        "The ferry is crossing the river.",
+        "The delicious cake is marvelous.",
+        "This is a test, to check for whitespace.",
+        "The elephant is a large animal.",
+        "Example of a word without the letter E.",
+      ];
+
+      // Define regular expressions for each case
+
+      const regexes = [
+       // 1. Matches car and cat
+       /(car|cat)/
+
+        // 2. Matches pop and prop
+        /(pop|prop)/
+
+        // 3. Matches ferret, ferry, and ferrari
+        /(ferret|ferry|ferrari)/
+
+        // 4. Matches Any word ending in ious
+        /\w*ious\b/
+
+        // 5. Matches A whitespace character followed by a period, comma, colon, or semicolon
+        /\s[.,:;]/
+
+        // 6. Matches A word longer than six letters
+        /\b\w{7,}\b/
+
+        // 7. Matches A word without the letter e (or E)
+        /\b[a-df-z]+\b/i
+      ];
+
+      regexpGolf(testStrings, regexes);
+
+
+      const regexpGolf = (testStrings, regexes) => {
+        console.log(regexes[0]);
+
+        // Testing each regular expression against test strings
+        for (let i = 0; i < regexes.length; i++) {
+          const regex = regexes[i];
+          console.log(`Testing regex ${i + 1}: ${regex}`);
+
+          //   perform operation on each test string to find their match
+          for (const testString of testStrings) {
+            const match = regex.test(testString);
+            console.log(`  "${testString}" => ${match}`);
+          }
+        }
+      };
+
+
+      // ===============================
+      console.clear();
+
+            let first = /ca[r|t]/,
+                second = /pr?op/,
+                third = /ferr[et|y|ari]/,
+                fourth = /ious\b/,
+                fifth = /\s[.|,|:|;]/,
+                sixth = /\w{7,}/,
+                seventh = /\b[^\se]+\b/i;
+
+            verify(first,
+                   ["my car", "bad cats"],
+                   ["camper", "high art"]);
+
+            verify(second,
+                   ["pop culture", "mad props"],
+                   ["plop"]);
+
+            verify(third,
+                   ["ferret", "ferry", "ferrari"],
+                   ["ferrum", "transfer A"]);
+
+            verify(fourth,
+                   ["how delicious", "spacious room"],
+                   ["ruinous", "consciousness"]);
+
+            verify(fifth,
+                   ["bad punctuation ."],
+                   ["escape the period"]);
+
+            verify(sixth,
+                   ["hottentottententen"],
+                   ["no", "hotten totten tenten"]);
+
+            verify(seventh,
+                   ["red platypus", "wobbling nest"],
+                   ["earth bed", "learning ape", "BEET"]);
+
+
+            function verify(regexp, yes, no) {
+              if (regexp.source == "...") return;
+              for (let str of yes) if (!regexp.test(str)) {
+                console.log(`Failure to match '${str}'`);
+              }
+             for (let str of no) if (regexp.test(str)) {
+                console.log(`Unexpected match for '${str}'`);
+              }
+            }
+    </script>
+  </body>
+</html>

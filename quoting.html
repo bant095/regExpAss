@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let text = "'I love football,' I said, 'it's my hobbie.'";
+      // Change this call.
+      console.log(text.replace(/\W'|'\W|^'|&'/g, '" '));
+      // → "I love foootball," he said, "it's my job."
+
+      // ============ANSWER 2================
+
+      const quotingStyle = (sentence) => {
+        // declare single to double
+        const singleToDoubleQuotePattern = /'([^']+)'/g;
+        const singleToDoubleQuoteReplacement = '"$1"';
+
+        // declare double to single
+        const doubleToSingleQuotePattern = /(\w)"(\w)/g;
+        const doubleToSingleQuoteReplacement = "$1'$2";
+
+        // convert single quote to double quotes
+        let updatedStory = sentence.replace(
+          singleToDoubleQuotePattern,
+          singleToDoubleQuoteReplacement
+        );
+
+        // convert double contracted words  to single quote
+        updatedStory = updatedStory.replace(
+          doubleToSingleQuotePattern,
+          doubleToSingleQuoteReplacement
+        );
+
+        //   const updatedStory = story
+        //     .replace(/'([^']+)'/g, '"$1"')
+        //     .replace(/(\w)"(\w)/g, "$1'$2");
+        console.log(updatedStory);
+      };
+
+      // formated string
+      const story = `'I love football,' I said, 'it's my hobbie.'`;
+    </script>
+  </body>
+</html>

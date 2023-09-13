@@ -7,52 +7,23 @@
   </head>
   <body>
     <script>
-
-       // ============ANSWER 1================
+      // ============ANSWER 1================
 
       // Define test strings
       const testStrings = [
-        "I have a car and a cat.",
-        "The pop music is playing.",
-        "The ferry is crossing the river.",
-        "The delicious cake is marvelous.",
-        "This is a test, to check for whitespace.",
-        "The elephant is a large animal.",
-        "Example of a word without the letter E.",
+        "I possess both a car and a cat.",
+        "The melodic strains of pop music fill the air.",
+        "The ferry gracefully traverses the river.",
+        "The scrumptious cake is absolutely splendid.",
+        "This serves as a test to verify the absence of whitespace.",
+        "The elephant is an immense creature.",
+        "Here's a word lacking the letter 'E' as an example.",
       ];
-
-      // Define regular expressions for each case
-
-      const regexes = [
-       // 1. Matches car and cat
-       /(car|cat)/
-
-        // 2. Matches pop and prop
-        /(pop|prop)/
-
-        // 3. Matches ferret, ferry, and ferrari
-        /(ferret|ferry|ferrari)/
-
-        // 4. Matches Any word ending in ious
-        /\w*ious\b/
-
-        // 5. Matches A whitespace character followed by a period, comma, colon, or semicolon
-        /\s[.,:;]/
-
-        // 6. Matches A word longer than six letters
-        /\b\w{7,}\b/
-
-        // 7. Matches A word without the letter e (or E)
-        /\b[a-df-z]+\b/i
-      ];
-
-      regexpGolf(testStrings, regexes);
-
 
       const regexpGolf = (testStrings, regexes) => {
         console.log(regexes[0]);
 
-        // Testing each regular expression against test strings
+        // Test each regular expression against test strings
         for (let i = 0; i < regexes.length; i++) {
           const regex = regexes[i];
           console.log(`Testing regex ${i + 1}: ${regex}`);
@@ -65,56 +36,19 @@
         }
       };
 
+      // Define regular expressions for each case
 
-      // ===============================
-      console.clear();
+      const regexes = [
+        /ca[rt]/,
+        /pr?op/,
+        /ferr(et|y|ari)/,
+        /\b\w+ious\b/,
+        /\s[.,;:]/,
+        /\b\w{7,}\b/,
+        /\b[^eE\s]+\b/,
+      ];
 
-            let first = /ca[r|t]/,
-                second = /pr?op/,
-                third = /ferr[et|y|ari]/,
-                fourth = /ious\b/,
-                fifth = /\s[.|,|:|;]/,
-                sixth = /\w{7,}/,
-                seventh = /\b[^\se]+\b/i;
-
-            verify(first,
-                   ["my car", "bad cats"],
-                   ["camper", "high art"]);
-
-            verify(second,
-                   ["pop culture", "mad props"],
-                   ["plop"]);
-
-            verify(third,
-                   ["ferret", "ferry", "ferrari"],
-                   ["ferrum", "transfer A"]);
-
-            verify(fourth,
-                   ["how delicious", "spacious room"],
-                   ["ruinous", "consciousness"]);
-
-            verify(fifth,
-                   ["bad punctuation ."],
-                   ["escape the period"]);
-
-            verify(sixth,
-                   ["hottentottententen"],
-                   ["no", "hotten totten tenten"]);
-
-            verify(seventh,
-                   ["red platypus", "wobbling nest"],
-                   ["earth bed", "learning ape", "BEET"]);
-
-
-            function verify(regexp, yes, no) {
-              if (regexp.source == "...") return;
-              for (let str of yes) if (!regexp.test(str)) {
-                console.log(`Failure to match '${str}'`);
-              }
-             for (let str of no) if (regexp.test(str)) {
-                console.log(`Unexpected match for '${str}'`);
-              }
-            }
+      regexpGolf(testStrings, regexes);
     </script>
   </body>
 </html>

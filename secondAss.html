@@ -7,12 +7,12 @@
   </head>
   <body>
     <script>
+      // ============ANSWER 2================
+
       let text = "'I love football,' I said, 'it's my hobbie.'";
       // Change this call.
       console.log(text.replace(/\W'|'\W|^'|&'/g, '" '));
       // → "I love foootball," he said, "it's my job."
-
-      // ============ANSWER 2================
 
       const quotingStyle = (sentence) => {
         // declare single to double
@@ -34,11 +34,6 @@
           doubleToSingleQuotePattern,
           doubleToSingleQuoteReplacement
         );
-
-        //   const updatedStory = story
-        //     .replace(/'([^']+)'/g, '"$1"')
-        //     .replace(/(\w)"(\w)/g, "$1'$2");
-        console.log(updatedStory);
       };
 
       // formated string

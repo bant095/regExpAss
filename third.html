@@ -13,11 +13,11 @@
         const regexPattern = /^[-+]?(\d+\.\d*|\.\d+|\d+)([eE][-+]?\d+)?$/;
 
         let message = "";
-        // Use the test method to check if the input matches the pattern
+        // To Use the test method to check if the input matches
         const outPut = regexPattern.test(input);
         if (outPut) {
-          // string concantenation method
-          // message = input + "This is a Valid Input";
+          // concantenation method with string
+
           message = `${input} Is a Valid input`;
         } else {
           message = `${input} Is an invalid input`;
@@ -25,34 +25,16 @@
         return message;
       };
 
-      // Test cases
-      // console.log(validNumber("-5")); // true
-      // console.log(validNumber("+3.14")); // true
-      // console.log(validNumber("0.5")); // true
-      // console.log(validNumber("5.")); // true
-      // console.log(validNumber("1e-3")); // true
-      // console.log(validNumber("1E10")); // true
-      // console.log(validNumber(".5")); // true
-      // console.log(validNumber(".")); // false (lone dot)
-      // console.log(validNumber("abc")); // false (not a valid number)
-
-      //   ========================================
-
-      const numberRegex = /^[-+]?(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?$/;
-
-      /*
-        Explanation:
-
-        - `^` and `$` anchors the regex to match the entire string 
-        - `[-+]?` matches an optional plus or minus sign at the start
-        - `\d+` matches one or more digits
-        - `(\.\d*)?` matches an optional decimal part - `.` followed by zero or more digits 
-        - `|` acts as an OR operator
-        - `\.\d+` matches a decimal point followed by one or more digits (no leading whole number part)
-        - `([eE][-+]?\d+)?` matches an optional exponent part - `e` or `E`, optional sign, one or more digits
-
-        So this will match strings like `3`, `-1.5`, `+.3`, `5e-3`, etc. but not lone `.` or `e5`.
-      */
+      //The Test cases
+      console.log(validNumber("-5"));
+      console.log(validNumber("+3.14"));
+      console.log(validNumber("0.5"));
+      console.log(validNumber("5."));
+      console.log(validNumber("1e-3"));
+      console.log(validNumber("1E10"));
+      console.log(validNumber(".5"));
+      console.log(validNumber("."));
+      console.log(validNumber("abc"));
     </script>
   </body>
 </html>
